@@ -1,11 +1,11 @@
 import { v4 as uuidv4 } from 'uuid';
-import { User } from "../../entities/User";
-import { JWTservice } from "../../providers/services";
-import PasswordEncryptor from "../../providers/services/PasswordEncryptor";
-import { IUsersRepository } from "../../repositories/interfaces/IUsersRepository";
-import { IUsersTokenRepository } from "../../repositories/interfaces/IUsersTokenReposytory";
-import { RegisterRequestDTO } from "../DTO/ResgisteDTO";
-import { IMailProvider } from '../../providers/ResendMail/IMailProvider';
+import { User } from "../entities/User";
+import { JWTservice } from "../providers/services";
+import PasswordEncryptor from "../providers/services/PasswordEncryptor";
+import { IUsersRepository } from "../repositories/interfaces/IUsersRepository";
+import { IUsersTokenRepository } from "../repositories/interfaces/IUsersTokenReposytory";
+import { RegisterRequestDTO } from "./DTO/ResgisteDTO";
+import { IMailProvider } from '../providers/ResendMail/IMailProvider';
 // import createRegisterBody from '../../utils/mailRegisterBody';
 
 export class RegisterUseCase {

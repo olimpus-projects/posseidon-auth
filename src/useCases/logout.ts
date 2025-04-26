@@ -1,11 +1,6 @@
-import { UsersRepository } from "../../repositories/UsersRepository";
-import { UsersTokenRepository } from "../../repositories/UsersTokenRepository";
 import { authMiddleware } from "../middleware";
 import { LogoutController } from "./LogoutController";
 import { LogoutUseCase } from "../services/LogoutUseCase";
-
-const mongosUsersRepository = new UsersRepository();
-const mongosUsersTokenRepository = new UsersTokenRepository();
 
 const logoutUseCase = new LogoutUseCase(
   mongosUsersRepository,

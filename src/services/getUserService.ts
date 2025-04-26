@@ -1,6 +1,6 @@
-import { UserEntitie } from "../../entities/User";
-import { IUsersRepository } from "../../repositories/interfaces/IUsersRepository";
-import { GetUserRequestDTO } from "../DTO/getUserDTO";
+import { UserEntitie } from "../entities/User";
+import { IUsersRepository } from "../repositories/interfaces/IUsersRepository";
+import { GetUserRequestDTO } from "./DTO/getUserDTO";
 
 export class GetUserService {
     constructor(

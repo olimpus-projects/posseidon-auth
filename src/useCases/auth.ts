@@ -1,6 +1,6 @@
 import { UsersTokenRepository } from "../../../repositories/UsersTokenRepository";
 import { AuthController } from "./AuthController";
-import { AuthUseCase } from "./services/AuthService";
+import { AuthUseCase } from "../services/AuthService";
 
 const mongosUsersTokenRepository = new UsersTokenRepository();
 
