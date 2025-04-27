@@ -1,16 +1,13 @@
 import { Request, Response } from "express";
-import { RegisterUseCase } from "./RegisterUseCase";
-import { AuthMiddleware } from "../middleware/AuthMiddleware";
+import { RegisterService } from "services/RegisterSevice";
 
 export class RegisterController {
     constructor(
-        private registerUseCase: RegisterUseCase,
-        private authmiddleware: AuthMiddleware
+        private registerUseCase: RegisterService,
     ) {}
 
     async handle(request: Request, response: Response): Promise<Response> {
         const { name, email, password } = request.body;
-        // const auth = await this.authmiddleware.handle(request);
 
         try {
                 const token = await this.registerUseCase.execute({

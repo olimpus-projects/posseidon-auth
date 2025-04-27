@@ -1,31 +1,24 @@
 import { Request, Response } from "express";
-import { LogoutUseCase } from "./LogoutUseCase";
-import { AuthMiddleware } from "../middleware/AuthMiddleware";
+import { LogoutService } from "services/LogoutService";
+import { ResponseError } from "utils/error/ResponseError";
 
 export class LogoutController {
     constructor(
-        private logoutUseCase: LogoutUseCase,
-        private authmiddleware: AuthMiddleware
+        private logoutUseCase: LogoutService
     ) {}
 
     async handle(request: Request, response: Response): Promise<Response> {
         const { _id } = request.body;
-        const auth = await this.authmiddleware.handle(request);
 
         try {
-            if (auth) {
-                const del = await this.logoutUseCase.execute({
-                    _id,
-                });
-                if (del) return response.status(200).end();
-                return response.status(400).send();
-            }
-            return response.status(401).end();
-        }
-        catch {
-            return response.status(400).json({
-                message: 'Unexpected error'
-            })
+
+            const del = await this.logoutUseCase.execute({
+                _id,
+            });
+            if (!del) return response.status(400).end();
+            return response.status(200).end();
+        } catch (error) {
+            throw new ResponseError(500, 'Server Error');
         }
     }
 }

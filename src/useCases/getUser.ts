@@ -1,15 +1,14 @@
 
-import { authMiddleware } from "../middleware";
+import { GetUserService } from "services/getUserService";
 import { getUserController } from "../controllers/getUserController";
-import { GetUserUseCase } from "../services/getUserService";
+import { mongosUsersRepository } from "useCases";
 
-const getUserUseCase = new GetUserUseCase(
+const getUserUseCase = new GetUserService(
   mongosUsersRepository,
 )
 
 const getuserController = new getUserController(
-    getUserUseCase,
-    authMiddleware
+    getUserUseCase
 )
 
-export { getUserUseCase, getuserController }
+export { getuserController };

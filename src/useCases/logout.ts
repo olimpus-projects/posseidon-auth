@@ -1,15 +1,15 @@
-import { authMiddleware } from "../middleware";
-import { LogoutController } from "./LogoutController";
-import { LogoutUseCase } from "../services/LogoutUseCase";
+import { LogoutController } from "controllers/LogoutController"
+import { LogoutService } from "services/LogoutService"
+import { mongosUsersRepository, mongosUsersTokenRepository } from "useCases"
 
-const logoutUseCase = new LogoutUseCase(
+
+const logoutUseCase = new LogoutService(
   mongosUsersRepository,
   mongosUsersTokenRepository
 )
 
 const logoutController = new LogoutController(
-    logoutUseCase,
-    authMiddleware
+    logoutUseCase
 )
 
-export { logoutUseCase, logoutController }
+export { logoutController }

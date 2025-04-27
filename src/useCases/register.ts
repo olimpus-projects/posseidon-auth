@@ -1,16 +1,16 @@
-import { authMiddleware } from "../middleware";
-import { RegisterController } from "./RegisterController";
-import { RegisterUseCase } from "../services/RegisterUseCase";
+import { RegisterController } from "controllers/RegisterController"
+import { RegisterService } from "services/RegisterSevice"
+import { mailprovider, mongosUsersRepository, mongosUsersTokenRepository } from "useCases"
 
-const registerUseCase = new RegisterUseCase(
+
+const registerUseCase = new RegisterService(
   mongosUsersRepository,
   mongosUsersTokenRepository,
-  mailprovider
+  //mailprovider
 )
 
 const registerController = new RegisterController(
-    registerUseCase,
-    authMiddleware
+    registerUseCase
 )
 
-export {registerUseCase, registerController }
+export { registerController }

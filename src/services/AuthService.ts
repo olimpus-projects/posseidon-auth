@@ -1,8 +1,8 @@
-import { JWTservice } from "../../../providers/services";
-import { IUsersTokenRepository } from "../../../repositories/interfaces/IUsersTokenReposytory";
+import { IUsersTokenRepository } from "repositories/interfaces/IUsersTokenReposytory";
 import { AuthRequestDTO } from "./DTO/AuthDTO";
+import { JWTservice } from "providers/services";
 
-export class AuthUseCase {
+export class AuthService {
     constructor(
         private userTokenRepository: IUsersTokenRepository,
     ) {}

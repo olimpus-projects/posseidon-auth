@@ -1,26 +1,28 @@
-import { Request } from "express";
-import { AuthUseCase } from "../services/AuthService";
+import { NextFunction, Request, Response } from 'express';
+import { authUseCase } from 'useCases/auth';
 
-export class AuthMiddleware {
-    constructor(
-        private authUseCase: AuthUseCase,
-    ) {}
+const AuthMiddleware = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    const token = req.headers.authorization;
+    const headerToken = token ? token.replace('Bearer ', '') : null;
 
-    async handle(request: Request): Promise<boolean> {
-        const authorizationHeader = request.headers.authorization;
-        const headerToken = authorizationHeader ? authorizationHeader.replace('Bearer ', '') : null;
-
-        try {
-            if (typeof headerToken === 'string' && headerToken !== null) {
-                const usertoken = await this.authUseCase.execute({
-                    token: headerToken
-                });
-                if (usertoken != undefined) return true;
+    try {
+        if (typeof headerToken === 'string' && headerToken !== null) {
+            const usertoken = await authUseCase.execute({
+                token: headerToken,
+            });
+            if (!usertoken) {
+                return res.status(401).send('Unauthorized');
             }
-            return false;
+            return next();
         }
-        catch {
-            return false;
-        }
+        return res.status(401).send('Token not provided');
+    } catch (error) {
+        return res.status(401).send('Unauthorized');
     }
-}
+};
+
+export { AuthMiddleware };

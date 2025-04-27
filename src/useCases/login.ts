@@ -1,7 +1,8 @@
-import { LoginController } from "./LoginController";
-import { LoginUseCase } from "./LoginUseCase";
+import { LoginController } from "controllers/LoginController"
+import { LoginService } from "services/LoginService"
+import { mongosUsersRepository, mongosUsersTokenRepository } from "useCases"
 
-const loginUseCase = new LoginUseCase(
+const loginUseCase = new LoginService(
   mongosUsersRepository,
   mongosUsersTokenRepository
 )
@@ -10,4 +11,4 @@ const loginController = new LoginController(
     loginUseCase
 )
 
-export { loginUseCase, loginController }
+export { loginController }

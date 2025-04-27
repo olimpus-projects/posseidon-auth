@@ -5,21 +5,22 @@ import PasswordEncryptor from "../providers/services/PasswordEncryptor";
 import { IUsersRepository } from "../repositories/interfaces/IUsersRepository";
 import { IUsersTokenRepository } from "../repositories/interfaces/IUsersTokenReposytory";
 import { RegisterRequestDTO } from "./DTO/ResgisteDTO";
-import { IMailProvider } from '../providers/ResendMail/IMailProvider';
+import { ResponseError } from 'utils/error/ResponseError';
+// import { IMailProvider } from '../providers/ResendMail/IMailProvider';
 // import createRegisterBody from '../../utils/mailRegisterBody';
 
-export class RegisterUseCase {
+export class RegisterService {
     constructor(
         private usersRepository: IUsersRepository,
         private usersTokenRepository: IUsersTokenRepository,
-        private mailProvider: IMailProvider,
+        //private mailProvider: IMailProvider,
     ) {}
     async execute(
         data: RegisterRequestDTO
     ) {
         const userAlreadExists = await this.usersRepository.UserAlreadExists(data.email);
         if (userAlreadExists) {
-            throw new Error('User alread exists');
+            throw new ResponseError(401, 'User alread exists');
         }
         await PasswordEncryptor.hashPassword(data.password).then(hash => {
             data.password = hash;

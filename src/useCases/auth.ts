@@ -1,15 +1,10 @@
-import { UsersTokenRepository } from "../../../repositories/UsersTokenRepository";
-import { AuthController } from "./AuthController";
-import { AuthUseCase } from "../services/AuthService";
+import { UsersTokenRepository } from "repositories/UsersTokenRepository";
+import { AuthService } from "services/AuthService";
 
 const mongosUsersTokenRepository = new UsersTokenRepository();
 
-const authUseCase = new AuthUseCase(
+const authUseCase = new AuthService(
   mongosUsersTokenRepository
 );
 
-const authController = new AuthController(
-    authUseCase
-);
-
-export { authUseCase, authController }
+export { authUseCase }

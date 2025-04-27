@@ -3,7 +3,7 @@ import { IUsersRepository } from "../repositories/interfaces/IUsersRepository";
 import { IUsersTokenRepository } from "../repositories/interfaces/IUsersTokenReposytory";
 import { LogoutRequestDTO } from "./DTO/LogoutDTO";
 
-export class LogoutUseCase {
+export class LogoutService {
     constructor(
         private usersRepository: IUsersRepository,
         private usersTokenRepository: IUsersTokenRepository,
@@ -24,7 +24,7 @@ export class LogoutUseCase {
     private async _userVerify(user: User) {
         if (user) {
             const userTokenAlreadExists = await this.usersTokenRepository.TokenExist(user._id);
-            if (userTokenAlreadExists != (undefined && {})) {
+            if (userTokenAlreadExists && Object.keys(userTokenAlreadExists).length > 0) {
                 if(await this.usersTokenRepository.deleteUserToken(userTokenAlreadExists.token)) {
                     return true;
                 }

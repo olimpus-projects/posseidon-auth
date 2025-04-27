@@ -1,32 +1,26 @@
 import { Request, Response } from "express";
-import { GetUserUseCase } from "../services/getUserService";
-import { AuthMiddleware } from "../middleware/AuthMiddleware";
+import { GetUserService } from "services/getUserService";
+import { ResponseError } from "utils/error/ResponseError";
 
 export class getUserController {
     constructor(
-        private getuserUseCase: GetUserUseCase,
-        private authmiddleware: AuthMiddleware,
+        private getuserUseCase: GetUserService,
     ) {}
 
     async handle(request: Request, response: Response): Promise<Response | undefined> {
         const { _id, email } = request.body;
-        const auth = await this.authmiddleware.handle(request);
 
         try {
-            if (auth) {
                 const user = await this.getuserUseCase.execute({
                     _id,
                     email,
                 });
-                if (user) {
-                    return response.status(200).json(user);
+                if (!user) {
+                    return response.status(400).send('User not found');
                 }
-                return response.status(400).send();
-            }
+                return response.status(200).json(user);
         } catch {
-            return response.status(400).json({
-                message: 'Unexpected error'
-            })
+            throw new ResponseError(500, 'Server Error');
         }
     }
 }

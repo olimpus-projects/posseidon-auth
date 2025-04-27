@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { LoginUseCase } from "./LoginUseCase";
+import { LoginService } from "services/LoginService";
 
 export class LoginController {
     constructor(
-        private loginUseCase: LoginUseCase,
+        private loginUseCase: LoginService,
     ) {}
 
     async handle(request: Request, response: Response): Promise<Response> {

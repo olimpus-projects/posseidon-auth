@@ -1,5 +1,5 @@
+import modelUsersToken from "entities/models/UserTokenModel";
 import { ImongoFindOneTokenDTO, UserToken } from "../entities/UserToken";
-import modelUsersToken from "../providers/mongoDB/UserTokenModel";
 import { IUsersTokenRepository } from "./interfaces/IUsersTokenReposytory";
 
 export class UsersTokenRepository implements IUsersTokenRepository {
