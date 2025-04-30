@@ -12,13 +12,22 @@
     "strictPropertyInitialization": false,                             
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "baseUrl": "./src",
-      "typeRoots": [
-        "./node_modules/@types",
-        "./src/@types"
-      ],                                /* Skip type checking all .d.ts files. */
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["src/*"],
+      "@middleware/*": ["src/middleware/*"],
+      "@useCases/*": ["src/useCases/*"],
+      "@controllers/*": ["src/controllers/*"],
+      "@services/*": ["src/services/*"],
+      "@providers/*": ["src/providers/*"],
+      "@repositories/*": ["src/repositories/*"],
+      "@routes/*": ["src/routes/*"],
+      "@entities/*": ["src/entities/*"],
+      "@utils/*": ["src/utils/*"],
+    },
+    "moduleResolution": "node",                 
   },
   "include": [
-    "src/**/*ts"
+    "src/**/*"
   ]
 }

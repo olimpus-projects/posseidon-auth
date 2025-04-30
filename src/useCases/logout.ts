@@ -1,6 +1,7 @@
-import { LogoutController } from "controllers/LogoutController"
-import { LogoutService } from "services/LogoutService"
-import { mongosUsersRepository, mongosUsersTokenRepository } from "useCases"
+import { LogoutService } from "@services/LogoutService"
+import { mongosUsersRepository, mongosUsersTokenRepository } from "."
+import { LogoutController } from "@controllers/LogoutController"
+
 
 
 const logoutUseCase = new LogoutService(

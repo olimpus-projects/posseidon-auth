@@ -1,6 +1,6 @@
-import { ResponseError } from "utils/error/ResponseError";
-import { UserEntitie } from "../entities/User";
-import { IUsersRepository } from "../repositories/interfaces/IUsersRepository";
+import { ResponseError } from "@utils/error/ResponseError";
+import { UserEntitie } from "@entities/User";
+import { IUsersRepository } from "@repositories/interfaces/IUsersRepository";
 import { GetUserRequestDTO } from "./DTO/getUserDTO";
 
 export class GetUserService {

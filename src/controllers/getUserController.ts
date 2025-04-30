@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
-import { GetUserService } from "services/getUserService";
-import { ResponseError } from "utils/error/ResponseError";
+import { GetUserService } from "@services/getUserService";
+import { ResponseError } from "@utils/error/ResponseError";
+
 
 export class getUserController {
     constructor(

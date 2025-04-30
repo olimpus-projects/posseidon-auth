@@ -1,7 +1,7 @@
 
-import { GetUserService } from "services/getUserService";
-import { getUserController } from "../controllers/getUserController";
-import { mongosUsersRepository } from "useCases";
+import { GetUserService } from "@services/getUserService";
+import { getUserController } from "@controllers/getUserController";
+import { mongosUsersRepository } from ".";
 
 const getUserUseCase = new GetUserService(
   mongosUsersRepository,

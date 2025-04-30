@@ -1,8 +1,9 @@
 import { Request, Response, Router } from "express";
-import { AuthMiddleware } from "middleware/AuthMiddleware";
-import { ErrorMiddleware } from "middleware/ErrorMiddleware";
-import { loginController } from "useCases/login";
-import { logoutController } from "useCases/logout";
+import { AuthMiddleware } from "@middleware/AuthMiddleware";
+import { ErrorMiddleware } from "@middleware/ErrorMiddleware";
+import { loginController } from "@useCases/login";
+import { logoutController } from "@useCases/logout";
+
 
 export const uTokenRouter = Router();
 

@@ -1,6 +1,6 @@
-import { IUsersTokenRepository } from "repositories/interfaces/IUsersTokenReposytory";
+import { IUsersTokenRepository } from "@repositories/interfaces/IUsersTokenReposytory";
 import { AuthRequestDTO } from "./DTO/AuthDTO";
-import { JWTservice } from "providers/services";
+import { JWTservice } from "@providers/services";
 
 export class AuthService {
     constructor(

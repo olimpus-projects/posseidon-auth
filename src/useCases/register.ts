@@ -1,6 +1,7 @@
-import { RegisterController } from "controllers/RegisterController"
-import { RegisterService } from "services/RegisterSevice"
-import { mailprovider, mongosUsersRepository, mongosUsersTokenRepository } from "useCases"
+import { RegisterController } from "@controllers/RegisterController"
+import { RegisterService } from "@services/RegisterSevice"
+import { mongosUsersRepository, mongosUsersTokenRepository } from "."
+
 
 
 const registerUseCase = new RegisterService(

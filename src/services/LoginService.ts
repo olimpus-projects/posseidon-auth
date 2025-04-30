@@ -1,9 +1,9 @@
-import { ResponseError } from "utils/error/ResponseError";
-import { UserToken } from "../entities/UserToken";
-import { JWTservice } from "../providers/services";
-import PasswordEncryptor from "../providers/services/PasswordEncryptor";
-import { IUsersRepository } from "../repositories/interfaces/IUsersRepository";
-import { IUsersTokenRepository } from "../repositories/interfaces/IUsersTokenReposytory";
+import { ResponseError } from "@utils/error/ResponseError";
+import { UserToken } from "@entities/UserToken";
+import { JWTservice } from "@providers/services";
+import PasswordEncryptor from "@providers/services/PasswordEncryptor";
+import { IUsersRepository } from "@repositories/interfaces/IUsersRepository";
+import { IUsersTokenRepository } from "@repositories/interfaces/IUsersTokenReposytory";
 import { LoginRequestDTO } from "./DTO/LoginDTO";
 
 export class LoginService {

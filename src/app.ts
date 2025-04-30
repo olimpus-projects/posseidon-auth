@@ -1,6 +1,6 @@
+require('dotenv').config();
 import express from 'express'
 import { router } from './routes'
-import 'dotenv/config';
 import cors from 'cors';
 import connectDB from './providers/mongoDB/connection';
 // import swagguerUi from 'swagger-ui-express';
@@ -16,7 +16,7 @@ app.use(express.urlencoded());
 
 app.use(bodyParser.json());                        
 app.use(bodyParser.urlencoded({ extended: true }));
-//connectDB();
+connectDB();
 //app.use('/docs', swagguerUi.serve as any, swagguerUi.setup(swaggerDocs) as any);
 app.use('/v1', router);
 

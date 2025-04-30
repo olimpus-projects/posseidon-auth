@@ -1,6 +1,6 @@
 import { Schema, Document } from 'mongoose';
 import { User } from '../User';
-import { db } from 'providers/mongoDB/useDb';
+import { db } from '@providers/mongoDB/useDb';
 
 export type IUserSchema = User & Document;
 

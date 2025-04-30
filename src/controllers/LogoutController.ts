@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { LogoutService } from "services/LogoutService";
-import { ResponseError } from "utils/error/ResponseError";
+import { LogoutService } from "@services/LogoutService";
+import { ResponseError } from "@utils/error/ResponseError";
 
 export class LogoutController {
     constructor(

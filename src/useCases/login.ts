@@ -1,6 +1,7 @@
-import { LoginController } from "controllers/LoginController"
-import { LoginService } from "services/LoginService"
-import { mongosUsersRepository, mongosUsersTokenRepository } from "useCases"
+import { LoginService } from "@services/LoginService"
+import { mongosUsersRepository, mongosUsersTokenRepository } from "."
+import { LoginController } from "@controllers/LoginController"
+
 
 const loginUseCase = new LoginService(
   mongosUsersRepository,

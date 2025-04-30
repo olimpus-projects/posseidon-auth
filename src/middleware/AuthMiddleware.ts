@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
-import { authUseCase } from 'useCases/auth';
+import { authUseCase } from '@useCases/auth';
 
-const AuthMiddleware = async (
+export const AuthMiddleware = async (
     req: Request,
     res: Response,
     next: NextFunction
@@ -24,5 +24,3 @@ const AuthMiddleware = async (
         return res.status(401).send('Unauthorized');
     }
 };
-
-export { AuthMiddleware };

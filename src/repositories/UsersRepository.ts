@@ -1,5 +1,5 @@
-import modelUsers from "entities/models/UserModel";
-import { User } from "../entities/User";
+import modelUsers from "@entities/models/UserModel";
+import { User } from "@entities/User";
 import { IUsersRepository } from "./interfaces/IUsersRepository";
 
 export class UsersRepository implements IUsersRepository {

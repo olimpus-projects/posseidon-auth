@@ -1,6 +1,6 @@
-import { User } from "../entities/User";
-import { IUsersRepository } from "../repositories/interfaces/IUsersRepository";
-import { IUsersTokenRepository } from "../repositories/interfaces/IUsersTokenReposytory";
+import { User } from "@entities/User";
+import { IUsersRepository } from "@repositories/interfaces/IUsersRepository";
+import { IUsersTokenRepository } from "@repositories/interfaces/IUsersTokenReposytory";
 import { LogoutRequestDTO } from "./DTO/LogoutDTO";
 
 export class LogoutService {

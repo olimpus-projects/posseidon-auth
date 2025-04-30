@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import { UserToken } from "../UserToken";
-import { db } from "providers/mongoDB/useDb";
+import { db } from "@providers/mongoDB/useDb";
 
 
 

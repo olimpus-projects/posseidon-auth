@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { RegisterService } from "services/RegisterSevice";
+import { RegisterService } from "@services/RegisterSevice";
 
 export class RegisterController {
     constructor(

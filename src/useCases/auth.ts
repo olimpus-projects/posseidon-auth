@@ -1,5 +1,5 @@
-import { UsersTokenRepository } from "repositories/UsersTokenRepository";
-import { AuthService } from "services/AuthService";
+import { UsersTokenRepository } from "@repositories/UsersTokenRepository";
+import { AuthService } from "@services/AuthService";
 
 const mongosUsersTokenRepository = new UsersTokenRepository();
 
