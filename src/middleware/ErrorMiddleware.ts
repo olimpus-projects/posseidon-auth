@@ -5,11 +5,11 @@ export const ErrorMiddleware = (err: any, req: Request, res: Response, next: Nex
     if(err instanceof ResponseError) {
         return res.status(err.statusCode).json({
             message: err.message
-        });
+        }).end();
     }
     console.error(err.stack);
     return res.status(500).json({
         message: 'Internal Server Error',
         error: err.message,
-    });
+    }).end();
 }

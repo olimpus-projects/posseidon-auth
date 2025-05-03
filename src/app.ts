@@ -2,10 +2,10 @@ require('dotenv').config();
 import express from 'express'
 import { router } from './routes'
 import cors from 'cors';
-import connectDB from './providers/mongoDB/connection';
 // import swagguerUi from 'swagger-ui-express';
 // import swaggerDocs from './swagger.json';
 import bodyParser from 'body-parser';
+import connectDB from './providers/mongoDB/connection';
 
 const app = express();
 

@@ -1,0 +1,87 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "zeus",
+    "collectionId": "db8512ab-f548-433c-8ffa-299c615fbd14",
+    "dateExported": "2025-05-03T20:07:39.898Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "94b3544a-d277-47c2-9628-982f2645415f",
+            "colId": "db8512ab-f548-433c-8ffa-299c615fbd14",
+            "containerId": "",
+            "name": "logout",
+            "url": "http://localhost:3000/v1/logout",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2025-05-03T20:05:45.525Z",
+            "modified": "2025-05-03T20:05:45.525Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"_id\": \"c4782678-98d5-4ca2-b8a9-2770da96c71e\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJjNDc4MjY3OC05OGQ1LTRjYTItYjhhOS0yNzcwZGE5NmM3MWUiLCJpYXQiOjE3NDYzMDIyNzIsImV4cCI6MTc0NjM4ODY3Mn0.YpB9wZKxQNpcy9gHggSLj04sx4UoOwMDIcvAwU5USFo"
+            }
+        },
+        {
+            "_id": "920d46b3-9431-4f70-9502-5a6f4d40a349",
+            "colId": "db8512ab-f548-433c-8ffa-299c615fbd14",
+            "containerId": "",
+            "name": "getUser",
+            "url": "http://localhost:3000/v1/getUser",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2025-05-03T20:05:58.436Z",
+            "modified": "2025-05-03T20:05:58.436Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"_id\": \"c4782678-98d5-4ca2-b8a9-2770da96c71e\",\n  \"email\": \"matheus@matheus.com\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJjNDc4MjY3OC05OGQ1LTRjYTItYjhhOS0yNzcwZGE5NmM3MWUiLCJpYXQiOjE3NDYzMDIyNzIsImV4cCI6MTc0NjM4ODY3Mn0.YpB9wZKxQNpcy9gHggSLj04sx4UoOwMDIcvAwU5USFo"
+            }
+        },
+        {
+            "_id": "da13cbe8-acb0-4744-99a5-a87ba3c0f4ca",
+            "colId": "db8512ab-f548-433c-8ffa-299c615fbd14",
+            "containerId": "",
+            "name": "login",
+            "url": "http://localhost:3000/v1/login",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2025-05-03T20:06:06.871Z",
+            "modified": "2025-05-03T20:06:06.871Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"matheus@matheus.com\",\n  \"password\": \"teste123\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "bb36b7a0-f808-4078-b99d-554e52bf0c9a",
+            "colId": "db8512ab-f548-433c-8ffa-299c615fbd14",
+            "containerId": "",
+            "name": "register",
+            "url": "http://localhost:3000/v1/register",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2025-05-03T20:06:16.289Z",
+            "modified": "2025-05-03T20:06:16.289Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"teste\",\n  \"email\": \"matheus@matheus.com\",\n  \"password\": \"teste123\"\n}",
+                "form": []
+            }
+        }
+    ],
+    "ref": "Zv4WjhvXL5vGWDbzNraDE-Y_TOOTJMwaIu3hEn99GbHQa14FQZZV63vSgp-53a-5dQvTekahPwc_VfL8EYXnCQ"
+}

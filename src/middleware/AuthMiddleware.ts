@@ -21,6 +21,6 @@ export const AuthMiddleware = async (
         }
         return res.status(401).send('Token not provided');
     } catch (error) {
-        return res.status(401).send('Unauthorized');
+        throw error;
     }
 };
