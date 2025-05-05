@@ -1,248 +1,184 @@
 {
-    "openapi": "3.0.n",
+    "openapi": "3.0.0",
     "info": {
-        "title": "User Autenticator",
-        "contact": {
-            "email": "wlorenzi17@gmail.com"
-        },
-        "version": "1.0.0"
+      "title": "Zeus API",
+      "description": "API documentation for Zeus application",
+      "version": "1.0.0"
     },
     "servers": [
-        {
-            "url": "http://localhost:4000/",
-            "description": "Local"
-        }
+      {
+        "url": "http://localhost:3000/v1",
+        "description": "Local development server"
+      }
     ],
     "paths": {
-        "/register": {
-            "post": {
-                "sumary": "Cadastro de usuarios",
-                "description": "Rota fechada - é necessário estar logado para cadastrar um novo usuario",
-                "security": [
-                    {
-                      "BearerAuth": []
+      "/logout": {
+        "post": {
+          "summary": "Logout user",
+          "tags": ["Auth"],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                      "type": "string",
+                      "example": "c4782678-98d5-4ca2-b8a9-2770da96c71e"
                     }
-                  ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "properties": {
-                                    "_id": {
-                                        "type": "string"
-                                    },
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "email": {
-                                        "type": "string"
-                                    },
-                                    "passwordHash": {
-                                        "type": "string"
-                                    }
-                                }
-                            },
-                            "example": {
-                                "name": "Teste",
-                                "email": "teste@teste.com",
-                                "password": "senha"
-                            },
-                            "responses": {
-                                "401": {
-                                    "description": "Unauthorized"
-                                },
-                                "400": {
-                                    "description": "Error"
-                                },
-                                "200": {
-                                    "description": "OK",
-                                    "content": {
-                                        "application/json": {
-                                            "schema": {
-                                                "token": {
-                                                    "type": "string"
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                  }
                 }
+              }
             }
-        },
-        "/login": {
-            "post": {
-                "sumary": "Login e autenticação de usuarios",
-                "description": "Se os paramentros passados corresponderem com as regras de negócio, o retorno será um token JWT com expiração após 24 horas",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "properties": {
-                                    "_id": {
-                                        "type": "string"
-                                    },
-                                    "user": {
-                                        "type": "User"
-                                    },
-                                    "token": {
-                                        "type": "string"
-                                    }
-                                }
-                            },
-                            "example": {
-                                "email": "teste@teste.com",
-                                "password": "senha"
-                            },
-                            "responses": {
-                                "401": {
-                                    "description": "Unauthorized"
-                                },
-                                "400": {
-                                    "description": "Error"
-                                },
-                                "200": {
-                                    "description": "OK",
-                                    "content": {
-                                        "application/json": {
-                                            "schema": {
-                                                "token": {
-                                                    "type": "string"
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+          },
+          "responses": {
+            "200": {
+              "description": "Successfully logged out"
             }
-        },
-        "/logout": {
-            "post": {
-                "sumary": "Logout de usuarios",
-                "description": "return void",
-                  "security": [
-                    {
-                      "BearerAuth": []
-                    }
-                  ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "properties": {
-                                    "_id": {
-                                        "type": "string"
-                                    },
-                                    "email": {
-                                        "type": "string"
-                                    }
-                                }
-                            },
-                            "example": {
-                                "_id": "uiabsv5cb3b-asfci588kn-af54d916ckn",
-                                "email": "teste@teste.com"
-                            },
-                            "responses": {
-                                "401": {
-                                    "description": "Unauthorized"
-                                },
-                                "400": {
-                                    "description": "Error"
-                                },
-                                "200": {
-                                    "description": "OK",
-                                    "content": {
-                                        "application/json": {
-                                            "schema": {
-                                                "user": {
-                                                    "type": "string"
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+          },
+          "security": [
+            {
+              "bearerAuth": []
             }
-        },
-        "/autenticator": {
-            "post": {
-                "sumary": "Verficação de token de acesso",
-                "description": "return token",
-                "securityDefinitions": {
-                    "BearerAuth": {
-                      "type": "JWT",
-                      "name": "x-access-token",
-                      "in": "header",
-                      "required": "true"
+          ]
+        }
+      },
+      "/getUser": {
+        "get": {
+          "summary": "Get user information",
+          "tags": ["User"],
+          "parameters": [
+            {
+              "name": "_id",
+              "in": "query",
+              "description": "User ID",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "email",
+              "in": "query",
+              "description": "User email",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "User information retrieved successfully"
+            }
+          },
+          "security": [
+            {
+              "bearerAuth": []
+            }
+          ]
+        }
+      },
+      "/login": {
+        "post": {
+          "summary": "Login user",
+          "tags": ["Auth"],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string",
+                      "example": "matheus@matheus.com"
+                    },
+                    "password": {
+                      "type": "string",
+                      "example": "teste123"
                     }
                   },
-                  "security": [
-                    {
-                      "BearerAuth": []
-                    }
-                  ]
-            }
-        },
-        "/getUser": {
-            "get": {
-                "sumary": "Verficação e busca de usurios",
-                "description": "Se os paramentros passados corresponderem com as regras de negócio, o retorno será um Usuario",
-                  "security": [
-                    {
-                      "BearerAuth": []
-                    }
-                  ],
-                  "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "properties": {
-                                    "_id": {
-                                        "type": "string"
-                                    },
-                                    "email": {
-                                        "type": "string"
-                                    }
-                                }
-                            },
-                            "example": {
-                                "email": "teste@teste.com",
-                                "password": "senha"
-                            },
-                            "responses": {
-                                "401": {
-                                    "description": "Unauthorized"
-                                },
-                                "400": {
-                                    "description": "Error"
-                                },
-                                "200": {
-                                    "description": "OK",
-                                    "content": {
-                                        "application/json": {
-                                            "schema": {
-                                                "user": {
-                                                    "_id": "string",
-                                                    "name": "string",
-                                                    "email": "string"
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                  "required": ["email", "password"]
                 }
+              }
             }
+          },
+          "responses": {
+            "200": {
+              "description": "Successfully logged in",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "token": {
+                        "type": "string",
+                        "description": "JWT token for authentication"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
-    }
-}
+      },
+      "/register": {
+        "post": {
+          "summary": "Register new user",
+          "tags": ["Auth"],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "teste"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "matheus@matheus.com"
+                    },
+                    "password": {
+                      "type": "string",
+                      "example": "teste123"
+                    }
+                  },
+                  "required": ["name", "email", "password"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "User created successfully"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "securitySchemes": {
+        "bearerAuth": {
+          "type": "http",
+          "scheme": "bearer",
+          "bearerFormat": "JWT"
+        }
+      }
+    },
+    "tags": [
+      {
+        "name": "Auth",
+        "description": "Authentication endpoints"
+      },
+      {
+        "name": "User",
+        "description": "User related endpoints"
+      }
+    ]
+  }
