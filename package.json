@@ -1,7 +1,7 @@
 {
-  "name": "posseidon-auth-sas",
+  "name": "zeus-sas",
   "version": "1.0.0",
-  "description": "auth users API",
+  "description": "zeus API",
   "main": "index.js",
   "keywords": [],
   "author": "Wendel Lorenzi",
