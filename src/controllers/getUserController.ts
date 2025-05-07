@@ -9,7 +9,10 @@ export class getUserController {
     ) {}
 
     async handle(request: Request, response: Response): Promise<Response | undefined> {
-        const { _id, email } = request.body;
+        let { _id, email } = request.query;
+
+        _id = _id?.toString();
+        email = email?.toString();
 
         try {
                 const user = await this.getuserUseCase.execute({
